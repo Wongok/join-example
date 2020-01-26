@@ -19,11 +19,11 @@ public class Board {
 
     private String boardName;
 
-    @OneToMany(mappedBy = "board", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "board", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Post> posts = new ArrayList<>();
 
     @Builder
-    public Board(String name, String email) {
+    public Board(String boardName) {
         this.boardName = boardName;
     }
 }
