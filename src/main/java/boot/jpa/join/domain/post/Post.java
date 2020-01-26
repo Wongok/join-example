@@ -31,13 +31,14 @@ public class Post {
     @JoinColumn(foreignKey = @ForeignKey(name = "FK_POST_USER"))
     private User user;
 
-    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Comment> comments = new ArrayList<>();
 
     @Builder
-    public Post(String title, String content, User user) {
+    public Post(String title, String content, Board board, User user) {
         this.title = title;
         this.content = content;
+        this.board = board;
         this.user = user;
     }
 }
