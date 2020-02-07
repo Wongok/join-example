@@ -19,5 +19,5 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @Query("select u " +
             "from User u " +
             "JOIN FETCH u.posts")
-    List<UserFindAllResponseDto> FetchJoinUserPost();
+    List<UserFindAllResponseDto> UserPostFetchJoin();
 }
