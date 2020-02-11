@@ -53,4 +53,16 @@ public class UserServiceTests {
         System.out.println();
         Assert.assertThat(list.size(), CoreMatchers.is(5));
     }
+
+    @Test
+    public void InnerJoinTest() {
+        // given : data-h2.sql
+
+        // when
+        List<PostFindAllResponseDto> list = userService.UserPostInnerJoin();
+
+        //then
+        System.out.println();
+        Assert.assertThat(list.size(), CoreMatchers.is(5));
+    }
 }

@@ -9,11 +9,11 @@ import java.util.List;
 
 public interface UserRepository extends JpaRepository<User, Long> {
 
-    /*@Query("select p " +
+    /* @Query("select u.posts " +
+            "from User u ")*/   // FetchType.Eager
+    @Query("select p " +
             "from Post p " +
-            "INNER JOIN p.user u")*/
-    @Query("select u.posts " +
-            "from User u ")
+            "INNER JOIN p.user u")
     List<PostFindAllResponseDto> UserPostInnerJoin();
 
     @Query("select u " +
