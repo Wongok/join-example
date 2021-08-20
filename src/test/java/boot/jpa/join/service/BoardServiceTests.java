@@ -40,7 +40,7 @@ public class BoardServiceTests {
         userRepository.deleteAll();
         boardRepository.deleteAll();
         postRepository.deleteAll();
-        commentRepository.deleteAll();
+/*        commentRepository.deleteAll();*/
     }
 
     @Test
@@ -65,5 +65,28 @@ public class BoardServiceTests {
         //then
         System.out.println();
         Assert.assertThat(list.size(), CoreMatchers.is(5));
+    }
+
+    @Test
+    public void findAllPostTitlesTest() {
+        // given : data-h2.sql
+        List<String> postTitles = boardService.findAllPostTitles();
+
+        // then
+        // N + 1 쿼리
+        // Board의 숫자 만큼 쿼리 실행
+        Assert.assertThat(postTitles.size(), CoreMatchers.is(3));
+    }
+
+    @Test
+    public void findAllJoinFetchTest() {
+        // given : data-h2.sql
+        List<String> postTitles = boardService.findAllJoinFetch();
+
+        // then
+        // JOIN FETCH
+        // 1번의 쿼리 실행
+        System.out.println();
+        Assert.assertThat(postTitles.size(), CoreMatchers.is(6));
     }
 }
